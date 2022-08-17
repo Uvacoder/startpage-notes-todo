@@ -58,14 +58,15 @@ const TodoSec = (props) => {
     return(
         <div className='todos-container'>
             <div className='todos-controls'>
-                <i className="fa-solid fa-up-right-and-down-left-from-center transparent" />
-                <i className="fa-solid fa-xmark" onClick={props.exitTodo} />
+                <div className="todos-add-btn" onClick={()=>addTodo()}>
+                    <i className="fa-solid fa-circle-plus"></i>
+                    Add Item
+                </div>
+                <i className="fa-solid fa-xmark pointer" onClick={props.exitTodo} />
             </div>
-            <div className="todos-add-btn" onClick={()=>addTodo()}>
-                <i className="fa-solid fa-circle-plus"></i>
-                Add Item
+            <div className='todo-list-container'>
+                {todoList}
             </div>
-            {todoList}
         </div>
     )
 }

@@ -3,7 +3,7 @@
 }
 
 :root{
-  --handwriting-font: 'Gloria Hallelujah', cursive;
+  --handwriting-font: 'Sriracha', cursive;
   --business-font: 'Poiret One', cursive;
   --main-dark-color: #252525;
   --main-light-color: #f3f3f3;
@@ -63,7 +63,7 @@ nav i:hover{
   height:100vh;
   width:100vw;
   display:flex;
-  justify-content: center;
+  justify-content: space-evenly;
   align-items: center;
 }
 #time-container{
@@ -71,24 +71,22 @@ nav i:hover{
   height:max-content;
   padding:.5rem 2rem;
 }
-.todos-container{
+.todos-container,
+.notes-container{
   background-color: rgba(37, 37, 37,.6);
-  position:absolute;
-  top:5%;
-  left:5%;
   padding:3rem 1.5rem;
   text-align: center;
   display:flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
   border-radius: 5px;
   min-height: 50%;
-  min-width: 25%;
+  min-width: 600px;
 }
 .todos-controls{
   display:flex;
-  width:80%;
+  width:90%;
   justify-content: space-between;
   font-size: 1.9rem;
 }
@@ -107,17 +105,24 @@ nav i:hover{
   padding: 7px 16px;
   border-radius: 5px;
   margin-bottom: 1rem;
-  border: 1px solid var(--main-light-color)
+  border: 1px solid var(--main-light-color);
+  cursor: pointer;
+  font-size: 16px;
 }
 .todos-add-btn:hover{
   background-color: var(--main-dark-color);
   color:var(--main-light-color);
 }
+.todo-list-container{
+  display:flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  margin-top:20px;
+}
 .todo-container{
   display:flex;
   align-items: center;
   justify-content: center;
-
 }
 .todo-text-box{
   width:3in;
@@ -149,13 +154,7 @@ nav i:hover{
   margin:0;
   padding:0;
 }
-.notes-container{
-  background-color: rgba(37, 37, 37,.8);
-  position:absolute;
-  top:5%;
-  right:5%;
-  padding:3rem 1.5rem;
-}
+
 .notes-title{
   margin:0 0 1rem;
   text-align: center;
@@ -200,4 +199,7 @@ nav i:hover{
 }
 .red-text{
   color:red;
+}
+.pointer{
+  cursor: pointer;
 }

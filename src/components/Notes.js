@@ -6,7 +6,6 @@ export default function Notes(){
         const initialValue = JSON.parse(saveData)
         return initialValue || ""
     })
-    console.log(text)
     useEffect(()=>{
         localStorage.setItem("bltJrnText", JSON.stringify(text))
     }, [text])
