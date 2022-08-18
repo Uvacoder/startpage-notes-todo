@@ -78,7 +78,7 @@ nav i:hover{
   text-align: center;
   display:flex;
   flex-direction: column;
-  justify-content: flex-start;
+  justify-content: flex;
   align-items: center;
   border-radius: 5px;
   min-height: 50%;
@@ -117,7 +117,13 @@ nav i:hover{
   display:flex;
   flex-direction: column;
   justify-content: flex-start;
-  margin-top:20px;
+}
+.todo-checkbox{
+  margin-right:20px;
+  background-color: transparent;
+}
+.trash-icon{
+  margin-left:20px;
 }
 .todo-container{
   display:flex;
@@ -168,7 +174,6 @@ nav i:hover{
   width:4in;
   min-height: 4in;
   border:none;
-
 }
 .habits-container{
   position:absolute;

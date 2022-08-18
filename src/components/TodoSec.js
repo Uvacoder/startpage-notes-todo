@@ -64,6 +64,7 @@ const TodoSec = (props) => {
                 </div>
                 <i className="fa-solid fa-xmark pointer" onClick={props.exitTodo} />
             </div>
+            <p className='todos-title'>Todo List</p>
             <div className='todo-list-container'>
                 {todoList}
             </div>

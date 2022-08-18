@@ -11,7 +11,8 @@ const Todo = (props) => {
         classes= "fa-solid fa-trash-can transparent"
     }
 
-    const elementToRender = props.text.length < 20 ? 
+// when to transition to a textarea
+    const elementToRender = props.text.length < 25 ? 
                             <input autoFocus onFocus={(e)=>{
                                 const end = props.text.length
                                 e.target.setSelectionRange(end, end)
@@ -29,9 +30,9 @@ const Todo = (props) => {
 
     return (
         <div className="todo-container" ref={ref}>
-            <input onChange={() => props.toggleCheckbox(props.todoID)} type='checkbox' checked={props.isChecked} />
+            <input className="todo-checkbox" onChange={() => props.toggleCheckbox(props.todoID)} type='checkbox' checked={props.isChecked} />
             {elementToRender}
-            <div className="red-text">
+            <div className="trash-icon red-text">
                 <i onClick={()=> props.removeTodo(props.todoID)} className={classes} />
             </div>
         </div>
