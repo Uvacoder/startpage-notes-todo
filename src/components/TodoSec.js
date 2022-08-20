@@ -2,6 +2,7 @@ import Todo from './Todo'
 import {useState, useEffect} from 'react'
 import { nanoid } from 'nanoid'
 import autosize from 'autosize'
+import { useAutoAnimate } from '@formkit/auto-animate/react'
 
 const TodoSec = (props) => {
 
@@ -38,22 +39,14 @@ const TodoSec = (props) => {
         })
         setTodos(newState)
     }
-    function toggleTodoCheckbox(id){
-        let newState = todos.map(todo => {
-                if(todo.todoID === id){
-                    return {...todo, done: !todo.done}
-                }else{
-                    return todo
-                }
-        })
-        setTodos(newState)
-        }
 
     const todoList = todos.map(item =>{
         return (
-            <Todo updateText={updateTodoText} removeTodo={removeTodo} key={item.todoID} text={item.text} isChecked={item.done} todoID={item.todoID} toggleCheckbox={toggleTodoCheckbox}/>
+            <Todo updateText={updateTodoText} removeTodo={removeTodo} key={item.todoID} text={item.text} todoID={item.todoID} addTodo={addTodo} />
         )
     })
+
+    const [animationParent] = useAutoAnimate()
 
     return(
         <div className='todos-container'>
@@ -65,7 +58,7 @@ const TodoSec = (props) => {
                 <i className="fa-solid fa-xmark pointer" onClick={props.exitTodo} />
             </div>
             <p className='todos-title'>Todo List</p>
-            <div className='todo-list-container'>
+            <div ref={animationParent} className='todo-list-container'>
                 {todoList}
             </div>
         </div>

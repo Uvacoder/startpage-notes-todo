@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
     
-export default function Notes(){
+export default function Notes(props){
     const [text, setText] = useState(() =>{
         const saveData = localStorage.getItem("bltJrnText")
         const initialValue = JSON.parse(saveData)
@@ -12,8 +12,13 @@ export default function Notes(){
 
     return(
         <div className="notes-container">
+            <div className="notes-controls">
+            <i className="fa-solid fa-xmark pointer" onClick={props.exitNotes} />
+            </div>
             <h2 className="notes-title">Notes</h2>
-            <textarea placeholder="Whatever you type here will stay here for next time you come back..." onChange={(e)=>setText(e.target.value)} value={text}></textarea>
+            <div className="textarea-container">
+                <textarea placeholder="Whatever you type here will stay here for next time you come back..." onChange={(e)=>setText(e.target.value)} value={text}></textarea>
+            </div>
         </div>
     )
 }

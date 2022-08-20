@@ -5,7 +5,7 @@ import Weather from "./components/Weather";
 import Time from "./components/Time";
 import { useEffect, useState } from 'react';
 import { createApi } from "unsplash-js"
-
+import { useAutoAnimate } from '@formkit/auto-animate/react'
 
 
 const api = createApi({
@@ -60,15 +60,17 @@ function App() {
 
   }, [])
 
+  const [animationParent] = useAutoAnimate()
+
   return (
-    <div className="App">
+    <div ref={animationParent} className="App">
       <nav>
         <i className="fa-regular fa-circle-check todo-icon" onClick={()=>{setShowTodo(!showTodo)}} />
         <i className="fa-solid fa-file-pen notes-icon" onClick={()=>{setShowEditor(!showEditor)}} />
       </nav>
       {showTodo && <TodoSec exitTodo={()=> setShowTodo(false)}/>}
       <Time time={time} />
-      {showEditor && <Notes />}
+      {showEditor && <Notes exitNotes={()=> setShowEditor(false)} />}
       {weatherInfo && <Weather weatherInfo={weatherInfo}/>}
     </div>
   );

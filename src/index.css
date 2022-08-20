@@ -84,15 +84,18 @@ nav i:hover{
   min-height: 50%;
   min-width: 600px;
 }
-.todos-controls{
+.todos-controls,
+.notes-controls{
   display:flex;
   width:90%;
   justify-content: space-between;
   font-size: 1.9rem;
 }
-.todos-title{
+.todos-title,
+.notes-title{
   font-size: 2rem;
   margin:0 0 1rem;
+  text-shadow: var(--dark-text-shadow);
 }
 .todos-add-btn{
   background-color: var(--main-light-color);
@@ -122,13 +125,18 @@ nav i:hover{
   margin-right:20px;
   background-color: transparent;
 }
-.trash-icon{
-  margin-left:20px;
+.remove-todo-icon{
+  font-size: 30px;
+  padding:10px;
+  cursor: pointer;
 }
 .todo-container{
   display:flex;
   align-items: center;
   justify-content: center;
+  background-color: rgba(37, 37, 37,.9);
+  margin:.25rem 0;
+  border-radius: 10px;
 }
 .todo-text-box{
   width:3in;
@@ -141,6 +149,11 @@ nav i:hover{
   text-shadow: var(--dark-text-shadow);
   border:none;
   font-family: var(--handwriting-font), cursive;;
+  padding:5px;
+}
+.todo-text-box:focus,
+.todo-text-box:active{
+  outline: 1px solid var(--main-light-color);
 }
 .time-display,
 .date-display{
@@ -160,13 +173,11 @@ nav i:hover{
   margin:0;
   padding:0;
 }
-
-.notes-title{
-  margin:0 0 1rem;
-  text-align: center;
-  font-size: 2rem;
+.textarea-container{
+  padding:20px;
+  background-color: rgba(37, 37, 37,.9);
 }
-.notes-container textarea{
+.textarea-container textarea{
   font-family: var(--handwriting-font), cursive;
   text-shadow: var(--dark-text-shadow);
   background-color: transparent;
@@ -174,6 +185,10 @@ nav i:hover{
   width:4in;
   min-height: 4in;
   border:none;
+}
+.textarea-container textarea:focus,
+.textarea-container textarea:active{
+  outline:none;
 }
 .habits-container{
   position:absolute;

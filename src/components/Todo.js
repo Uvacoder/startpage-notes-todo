@@ -6,23 +6,34 @@ const Todo = (props) => {
     let classes
 
     if(hovered){
-        classes= "fa-solid fa-trash-can"
+        classes= "fa-regular fa-square-check"
     }else{
-        classes= "fa-solid fa-trash-can transparent"
+        classes= "fa-regular fa-square-check transparent"
     }
 
 // when to transition to a textarea
     const elementToRender = props.text.length < 25 ? 
-                            <input autoFocus onFocus={(e)=>{
-                                const end = props.text.length
-                                e.target.setSelectionRange(end, end)
-                                e.target.focus()
-                            }} className="todo-text-box" id={props.todoID} type="text" value={props.text} onChange={(e)=> props.updateText(e)} /> : 
-                            <textarea autoFocus onFocus={(e)=>{
-                                const end = props.text.length
-                                e.target.setSelectionRange(end, end)
-                                e.target.focus()
-                            }} className="todo-text-box" id={props.todoID} value={props.text} onChange={(e)=> props.updateText(e)} />
+        <input 
+            autoFocus
+            onChange={(e)=> props.updateText(e)} 
+            onKeyDown={(e)=>{
+                if(e.key==="Enter"){
+                    props.addTodo()
+                }
+            }} 
+            onFocus={(e)=>{
+            const end = props.text.length
+            e.target.setSelectionRange(end, end)
+            e.target.focus()
+            }} 
+            className="todo-text-box" 
+            id={props.todoID} type="text" 
+            value={props.text} /> : 
+        <textarea autoFocus onFocus={(e)=>{
+            const end = props.text.length
+            e.target.setSelectionRange(end, end)
+            e.target.focus()
+        }} className="todo-text-box" id={props.todoID} value={props.text} onChange={(e)=> props.updateText(e)} />
 
     if(props.text.length > 15){
         
@@ -30,9 +41,8 @@ const Todo = (props) => {
 
     return (
         <div className="todo-container" ref={ref}>
-            <input className="todo-checkbox" onChange={() => props.toggleCheckbox(props.todoID)} type='checkbox' checked={props.isChecked} />
             {elementToRender}
-            <div className="trash-icon red-text">
+            <div className="remove-todo-icon">
                 <i onClick={()=> props.removeTodo(props.todoID)} className={classes} />
             </div>
         </div>
